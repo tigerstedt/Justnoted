@@ -3,6 +3,7 @@ CREATE TABLE users
    id serial, 
    user_name varchar(255) not null,
    user_email varchar(255) not null,
+   user_password varchar (255) not null,
    user_active varchar(10) not null,
    user_created varchar(255) not null,
    PRIMARY KEY (id)
