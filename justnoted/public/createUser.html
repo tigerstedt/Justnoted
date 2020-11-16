@@ -4,19 +4,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="signup&login.css">
     <title>Document</title>
 </head>
 
 <body>
-    <label for="username">Username</label>
-    <input id="username" type="text">
+    <div class="header">
+        <h1>JustNoted</h1>
+      </div>
 
-    <label for="password">Password</label>
-    <input id="password" type="password">
+      <div class="card">
+          <h2>Sign up, it's FREE!</h2>
+      </div>
+      <div class="card">
+        <form>
+            <label for="username">Username:</label>
+            <input type="text" id="username"><br></br>
+            <label for="password">Password:</label>
+            <input type="password" id="password"><br></br>
 
-    <button id="submit">Submit</button>
+          </form> 
+          <button id="submit">Submit</button>
+        </div>
+    
 
+      <div class="footer"> 
+        <p>JustNoted is a taskplanner created for the everyday busy student.    Easily accessible, modern and user friendly helping to organise your everyday life!</p>
+        <h4>Created by PigeonQuelea</h4>
+      </div>
+    
 </body>
+    
 <script>
 
     let username = document.getElementById("username")
