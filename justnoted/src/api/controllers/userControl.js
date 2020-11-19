@@ -14,11 +14,13 @@ class UserController {
     }
 
     // Create a new user in the database
-    async createUser(username, password) {
+    async createUser(username, email, password) {
         try {
             console.log("username: ", username);
-            console.log("pass: ", password);
-            let response = await database.insertUser(username, password);
+            console.log("email: ", email);
+            console.log("password: ", password);
+            
+            let response = await database.insertUser(username, email, password);
             return response;
         } catch (error) {
             console.error(error)

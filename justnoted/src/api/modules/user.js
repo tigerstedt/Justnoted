@@ -8,8 +8,9 @@ const hash = crypto.createHmac('sha256', secret)
                    .digest('hex');
 */
 class User {
-    constructor(username, password) {
+    constructor(username, email, password) {
         this.username = username;
+        this.email = email;
         this.password = crypto.createHmac('sha256', secret)
             .update(password)
             .digest('hex');

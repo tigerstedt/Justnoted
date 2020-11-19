@@ -1,10 +1,10 @@
 class List {
 
-    constructor(title, userId) {
+    constructor(listTitle) {
         // Specify attributes here like these below
-        this.title = title;
-        this.shareable = false;
-        this.userAccess = [userId];
+        this.listTitle = listTitle;
+        //this.shareable = false;
+       // this.userAccess = [userId];
     }
 }
 

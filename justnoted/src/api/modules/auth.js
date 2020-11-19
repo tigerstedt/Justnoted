@@ -6,25 +6,33 @@ const authenticator = (req, res, next) => {
     }
 
     const credentials = req.headers.authorization.split(' ')[1];
+    console.log(credentials);
     const [username, password] = Buffer.from(credentials, 'base64').toString('UTF-8').split(":");
+    
 
-    const loginUser = new User(username, password);
-    const user = authenticate(loginUser.username, loginUser.password)
+    const hashPassword = crypto.createHmac('sha256', secret)
+    .update(password)
+    .digest('hex');
+
+    console.log("logged in")
+
+    const user = authenticate(username, hashPassword)
+    console.log("user exists")
     if (!user) {
         return res.status(403).end()
     }
     req.user = user;
+    
     next();
+
 }
 // If user is found in database, return user, if not return null
 async function authenticate(username, password) {
     let response = await database.findUser(username, password);
+    console.log(response);
     if (response){
         return response;
     }
-    //if( username === "kalleKlovn" && password === "rød nese1"){
-       // return {user="kalleKlovn", email="kalle@magiskoy.no", userID:23};
-   // }
     return null;
 }
 

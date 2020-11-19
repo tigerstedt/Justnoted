@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+</head>
+
+<body>
+    <section>
+        username: <input type="text" id="loginUsername">
+        password: <input type="password" id="loginPassword">
+        <button id="loginUser">Login user</button>
+    </section>
+</body>
+<script>
+   
+        let credentials = null;
+
+        //when button is clicked, run function to log in 
+        document.getElementById("loginUser").onclick = function () {
+
+            let username = loginUsername.value
+            let password = loginPassword.value
+
+            credentials = "Basic " + window.btoa(`${username}:${password}`)
+            const url = 'http://localhost:3000/users'
+
+            let config = {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                    "authorization": credentials
+                }
+            }
+
+            fetch(url, config).then(resp => {
+                console.log(resp.status);
+            })
+
+
+        }
+    </script>
+    
+</script>
+
+</html>

@@ -3,8 +3,17 @@ const database = require("../../services/dataHandler");
 class ListController {
     // All list functions
     
-    async create () {
+    async createList (listTitle) {
         // Add a new list to the db
+        try {
+            console.log("Listname: ", listTitle);
+            
+            let response = await database.makeList(listTitle);
+            return response;
+        } catch (error) {
+            console.error(error)
+        }
+    
     }
 
     async update () {

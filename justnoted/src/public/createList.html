@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+
+</head>
+
+<body>
+    <label for="list">List name</label>
+    <input id="list" type="text">
+
+    <label for="task">Task</label>
+    <input id="task" type="text">
+
+    <button id="newList">Create list</button>
+
+    <button id="newTask">Create task</button>
+</body>
+<script>
+
+    let listTitle = document.getElementById("list")
+    let newList = document.getElementById("newList")
+    let task = document.getElementById("task")
+    let newTask = document.getElementById("newTask")
+
+    // when submit is clicked, run a function to save information for database
+    newList.addEventListener("click", () => {
+        let list = listTitle.value;
+        
+        // get lists
+        const url = 'http://localhost:3000/lists'
+        
+
+        // declaring the listtitle values
+        const config = {
+            method: 'POST',
+            body: JSON.stringify({
+                listTitle: list,
+            }),
+            headers: {
+                'content-type': 'application/json'
+            }
+        };
+        console.log("config is: ", config)
+        fetch(url, config).then((res) => {
+            console.log("Request finished");
+            console.log(res);
+        });
+    });
+
+    newTask.addEventListener("click", () => {
+        let todo = task.value;
+        
+        // get tasks
+        const url = 'http://localhost:3000/tasks'
+
+        // declaring the task values
+        const config = {
+            method: 'POST',
+            body: JSON.stringify({
+                task: todo,
+            }),
+            headers: {
+                'content-type': 'application/json'
+            }
+        };
+        console.log("config is: ", config)
+        fetch(url, config).then((res) => {
+            console.log("Request finished");
+            console.log(res);
+        });
+    });
+</script>
+
+</html>
